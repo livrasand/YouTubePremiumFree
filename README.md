@@ -6,10 +6,11 @@ In the era of relentless digital advertising, we're tired of being bombarded wit
 YouTubePremiumFree is a userscript designed to liberate you from intrusive ads and unwanted commercial interruptions on YouTube.
 
 ## Features
-- [x] AdBlocker: Eliminate all forms of advertisements, ensuring an uninterrupted viewing experience.
+- [x] AdBlocker: Eliminate all forms of advertisements, ensuring an uninterrupted viewing experience
 - [x] Premium Title
 - [ ] Premium Logo
 - [ ] Download videos and music
+- [ ] Offline mode: Play downloaded videos or music anytime, offline, anywhere, right inside YouTube
 - [ ] Premium resolution: Automcatically switches to HD Premium resolution
 
 
