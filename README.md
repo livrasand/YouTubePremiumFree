@@ -12,8 +12,7 @@ YouTubePremiumFree is a userscript designed to liberate you from intrusive ads a
 - [ ] Download videos and music
 - [ ] Offline mode: Play downloaded videos or music anytime, offline, anywhere, right inside YouTube
 - [x] Premium resolution: Automcatically switches to HD Premium resolution, first select your resolution
-
-
+- [x] Pop-ups blocker
 
 ## Installation
 1. **Install Tampermonkey**:
