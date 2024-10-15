@@ -22,9 +22,22 @@ YouTubePremiumFree is a userscript designed to liberate you from intrusive ads a
    - [Tampermonkey for Safari](http://tampermonkey.net/?browser=safari)
    - [Tampermonkey for Edge](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd)
    - [Tampermonkey for Opera/OperaGX](https://addons.opera.com/en-gb/extensions/details/tampermonkey-beta/)
+> [Tampermonkey on Android?](https://play.google.com/store/apps/details?id=com.microsoft.emmx)
+>
+>  Microsoft Edge is adding extension support, and you can help! To get Tampermonkey added, install the app on your Android device, then go to the Extensions menu and cast your vote for Tampermonkey.
 
 2. **Install the Script**: [Click here and press install](YouTube-Premium-Free.user.js?raw=True).
 
 3. **Enable the Script**: Enable the script by clicking the switch next to the script name in the Tampermonkey Dashboard.
 
 ### Feel free fees and ads, enjoy your YouTube!
+---
+### Status:
+
+| **Browser**                                      | **Status**                                        |
+|--------------------------------------------------|---------------------------------------------------|
+| **Chrome**                                       | ![unknown](https://img.shields.io/badge/unknown-yellow) |
+| **Firefox**                                      | ![passing](https://img.shields.io/badge/passing-green)   |
+| **Safari**                                       | ![unknown](https://img.shields.io/badge/unknown-yellow)   |
+| **Edge**                                         | ![problems](https://img.shields.io/badge/problems-red)    |
+| **Opera/OperaGX**                               | ![unknown](https://img.shields.io/badge/unknown-yellow)   |
