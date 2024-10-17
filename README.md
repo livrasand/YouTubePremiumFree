@@ -31,13 +31,3 @@ YouTubePremiumFree is a userscript designed to liberate you from intrusive ads a
 3. **Enable the Script**: Enable the script by clicking the switch next to the script name in the Tampermonkey Dashboard.
 
 ### Feel free fees and ads, enjoy your YouTube!
----
-### Status:
-
-| **Browser**                                      | **Status**                                        |
-|--------------------------------------------------|---------------------------------------------------|
-| **Chrome**                                       | ![unknown](https://img.shields.io/badge/unknown-yellow) |
-| **Firefox**                                      | ![passing](https://img.shields.io/badge/passing-green)   |
-| **Safari**                                       | ![unknown](https://img.shields.io/badge/unknown-yellow)   |
-| **Edge**                                         | ![problems](https://img.shields.io/badge/problems-red)    |
-| **Opera/OperaGX**                               | ![unknown](https://img.shields.io/badge/unknown-yellow)   |
