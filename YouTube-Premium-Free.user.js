@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YouTube Premium Free
 // @namespace    http://tampermonkey.net/
-// @version      1.2.0
+// @version      1.3.0
 // @description  Get YouTube Premium in your browser totally free
 // @author       Livrädo Sandoval
 // @match        https://www.youtube.com/*
@@ -17,28 +17,6 @@
 
 (function() {
     'use strict';
-
-    let elements = {
-        player: null,
-        next_video: null,
-        progress: null,
-        loop: null
-    }
-
-    let loaded = {
-        player: false,
-        progress: false
-    }
-
-    let loop = {
-        code: null,
-        value: null,
-        map: {
-            //'M21': '',
-            'M20': 'playlist',
-            'M13': 'video'
-        }
-    }
 
     // Configuration
     const adblocker = true;
@@ -221,7 +199,7 @@
 
             const startOfUrl = "https://www.youtube-nocookie.com/embed/";
 
-            const endOfUrl = "?rel=0&amp;autoplay=1&modestbranding=1";
+            const endOfUrl = "?autoplay=1&modestbranding=1&rel=0";
             const finalUrl = startOfUrl + videoID + endOfUrl;
 
 
@@ -548,77 +526,4 @@
     // --------------------
     // Entry Point
     applySettings().then(main);
-
-    function play_next_video(player = elements.player) {
-        elements.next_video = document.querySelector('ytd-playlist-panel-video-renderer[selected] + ytd-playlist-panel-video-renderer > a')
-        if(player.classList.contains('ended-mode')) {
-            let has_video_loop = elements.loop.querySelector('path')?.getAttribute('d').substring(0, 3) === 'M13'
-            //let ads = document.querySelector('.video-ads')
-            if(!has_video_loop) {
-                elements.next_video?.click()
-            }
-            //console.log('video-ended')
-        }
-        else if(player.querySelector('.html5-ypc-title')?.innerText) {
-            elements.next_video?.click()
-            //console.log('video-cannot-start')
-        }
-    }
-
-    function reset_loop(progress = elements.progress) {
-        if(!progress.hasAttribute('hidden')) {
-            loop.code = elements.loop.querySelector('path')?.getAttribute('d').substring(0, 3)
-            loop.value = loop.code.replace(/M\d+/, function(match) { return loop.map[match] || '' })
-            //console.log('progress-started')
-        }
-        else {
-            switch (loop.value) {
-                case 'video':
-                    elements.loop.click()
-                    /* falls through */
-                case 'playlist':
-                    setTimeout(function() { elements.loop.click() }, 1)
-            }
-            //console.log('progress-finished')
-        }
-    }
-
-    let loaded_check = setInterval(function() {
-        if(!loaded.player && elements.player && elements.next_video) {
-            loaded.player = true
-            play_next_video()
-            new MutationObserver(function(mutations) {
-                for(const mutation of mutations) {
-                    play_next_video(mutation.target)
-                }
-            }).observe(elements.player, {
-                attributeFilter: [ "class" ]
-            })
-        }
-        else {
-            elements.player = document.querySelector('div#movie_player')
-            elements.next_video = document.querySelector('ytd-playlist-panel-video-renderer[selected] + ytd-playlist-panel-video-renderer > a')
-        }
-
-        if(!loaded.progress && elements.progress && elements.loop) {
-            loaded.progress = true
-            reset_loop()
-            new MutationObserver(function(mutations) {
-                for(const mutation of mutations) {
-                    reset_loop(mutation.target)
-                }
-            }).observe(elements.progress, {
-                attributeFilter: [ "hidden" ]
-            })
-        }
-        else {
-            elements.progress = document.querySelector('yt-page-navigation-progress')
-            elements.loop = document.querySelector('ytd-playlist-loop-button-renderer button')
-        }
-
-        if(Object.values(loaded).every(Boolean)) {
-            clearInterval(loaded_check)
-            //console.log('all-elements-loaded')
-        }
-    }, 500)
 })();
