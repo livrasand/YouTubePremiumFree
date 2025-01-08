@@ -14,6 +14,7 @@ YouTubePremiumFree is a userscript designed to liberate you from intrusive ads a
 - [x] Autoplay Feature
 - [x] Premium resolution: Automcatically switches to HD Premium resolution, first select your resolution
 - [x] Pop-ups blocker
+- [ ] Playback history _(optional)_
 
 ## Installation
 1. **Install Tampermonkey**:
@@ -27,9 +28,15 @@ YouTubePremiumFree is a userscript designed to liberate you from intrusive ads a
 >
 >  Microsoft Edge is adding extension support, and you can help! To get Tampermonkey added, install the app on your Android device, then go to the Extensions menu and cast your vote for Tampermonkey.
 
-2. **Install the Ad Blocker Script**: [Click here and press install](YouTube-Premium-Free.user.js?raw=True).
-3. **Install the Autoplay Enabler Script _(optional)_**: [Click here and press install](YouTube-Autoplay-Feature.user.js?raw=True).
+2. **Enable Developer Mode**:  
+   To use Tampermonkey without any problems, you will need to enable "Developer mode" in your browser:
+   - Open the **Extensions page** in your browser.  
+   - Toggle the **"Developer mode"** switch at the top right.  
+_For more details, visit [Tampermonkey FAQ: Q408](https://www.tampermonkey.net/faq.php#Q408)._
 
-4. **Enable the Script**: Enable the script by clicking the switch next to the script name in the Tampermonkey Dashboard.
+3. **Install the Ad Blocker Script**: [Click here and press install](YouTube-Premium-Free.user.js?raw=True).
+4. **Install the Autoplay Enabler Script _(optional)_**: [Click here and press install](YouTube-Autoplay-Feature.user.js?raw=True).
+
+5. **Enable the Script**: Enable the script by clicking the switch next to the script name in the Tampermonkey Dashboard.
 
 ### Feel free fees and ads, enjoy your YouTube!
