@@ -52,7 +52,9 @@
     // Start observing the title element if it exists
     const titleElement = document.querySelector('title');
     if (titleElement) {
-        titleObserver.observe(titleElement, { childList: true });
+        titleObserver.observe(titleElement, {
+            childList: true
+        });
     }
 
     // Monitor for changes in the URL (e.g., navigating to a different video)
@@ -106,7 +108,7 @@
             if (popup) {
                 console.log("Popup detected, removing...");
 
-                if(popupButton) popupButton.click();
+                if (popupButton) popupButton.click();
 
                 popup.remove();
                 video.play();
@@ -143,7 +145,7 @@
                 return;
             }
 
-            if (isVideoPlayerModified){
+            if (isVideoPlayerModified) {
                 removeAllDuplicateVideos();
                 return;
             }
@@ -276,7 +278,7 @@
     }
 
     //removes ads on the page (not video player ads)
-    function removePageAds(){
+    function removePageAds() {
 
         const sponsor = document.querySelectorAll("div#player-ads.style-scope.ytd-watch-flexy, div#panels.style-scope.ytd-watch-flexy");
         const style = document.createElement('style');
@@ -315,7 +317,7 @@
         sponsor?.forEach((element) => {
             if (element.getAttribute("id") === "rendering-content") {
                 element.childNodes?.forEach((childElement) => {
-                    if (childElement?.data.targetId && childElement?.data.targetId !=="engagement-panel-macro-markers-description-chapters"){
+                    if (childElement?.data.targetId && childElement?.data.targetId !== "engagement-panel-macro-markers-description-chapters") {
                         //Skipping the Chapters section
                         element.style.display = 'none';
                     }
@@ -342,26 +344,29 @@
     const resolutions = ['highres', 'hd2880', 'hd2160', 'hd1440', 'hd1080', 'hd720', 'large', 'medium', 'small', 'tiny', 'auto'];
     const quality = {
         highres: 4320,
-        hd2880:  2880,
-        hd2160:  2160,
-        hd1440:  1440,
-        hd1080:  1080,
-        hd720:   720,
-        large:   480,
-        medium:  360,
-        small:   240,
-        tiny:    144,
-        auto:    0
+        hd2880: 2880,
+        hd2160: 2160,
+        hd1440: 1440,
+        hd1080: 1080,
+        hd720: 720,
+        large: 480,
+        medium: 360,
+        small: 240,
+        tiny: 144,
+        auto: 0
     };
 
     const qualityLevels = Object.fromEntries(
         Object.entries(quality).map(([key, value]) => [value, key])
     );
 
-    let userSettings = { ...DEFAULT_SETTINGS };
+    let userSettings = {
+        ...DEFAULT_SETTINGS
+    };
     let menuCommandIds = [];
 
-    let doc = document, win = window;
+    let doc = document,
+        win = window;
     let videoId = null;
 
     // --------------------
@@ -400,10 +405,9 @@
         ytPlayer.setPlaybackQualityRange(target, target, premiumData?.formatId);
         debugLog("Set quality to: " + target + (premiumData ? " Premium" : ""));
 
-        if (localItem){
-            localStorage.setItem("yt-player-quality",localItem);
-        }
-        else {
+        if (localItem) {
+            localStorage.setItem("yt-player-quality", localItem);
+        } else {
             localStorage.removeItem("yt-player-quality");
         }
     }
@@ -431,7 +435,10 @@
     }
 
     function findNextAvailableQuality(target, availableQualities) {
-        const available = availableQualities.map(q => ({ quality: q, value: quality[q] }));
+        const available = availableQualities.map(q => ({
+            quality: q,
+            value: quality[q]
+        }));
         const targetValue = quality[target];
         const smallerOrEqualQualities = available.filter(q => q.value <= targetValue);
         smallerOrEqualQualities.sort((a, b) => b.value - a.value);
@@ -517,10 +524,16 @@
     // --------------------
     // Main function
     function main() {
-        if (win.self == win.top) { createQualityMenu(); }
+        if (win.self == win.top) {
+            createQualityMenu();
+        }
         setResolution(userSettings.targetResolution);
-        win.addEventListener('popstate', () => { videoId = null; });
-        win.addEventListener("loadstart", () => { setResolution(userSettings.targetResolution); }, true);
+        win.addEventListener('popstate', () => {
+            videoId = null;
+        });
+        win.addEventListener("loadstart", () => {
+            setResolution(userSettings.targetResolution);
+        }, true);
     }
 
     // --------------------

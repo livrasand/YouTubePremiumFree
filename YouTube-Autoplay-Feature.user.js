@@ -1,39 +1,28 @@
-// ==UserScript==
-// @name         YouTube Autoplay Feature
-// @namespace    http://tampermonkey.net/
-// @version      1.0.0
-// @description  Autoplay Feature for YouTubePremiumFree.
-// @author       Livrädo Sandoval
-// @match        https://www.youtube.com/*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=youtube.com
-// @grant        none
-// ==/UserScript==
-
 (function() {
     'use strict';
 
-    let timeoutId; // Para manejar el temporizador globalmente
-    let lastVideoDuration = ''; // Para evitar reiniciar el temporizador en el mismo video
+    let timeoutId; // To handle the timer globally
+    let lastVideoDuration = ''; // To avoid resetting the timer on the same video
 
-    // Función para convertir duración de "min:seg" a milisegundos
+    // Function to convert duration from "min:sec" to milliseconds
     function convertTimeToMs(timeStr) {
         const [minutes, seconds] = timeStr.split(':').map(Number);
         return (minutes * 60 + seconds) * 1000;
     }
 
-    // Función para simular clic en el botón "Siguiente"
+    // Function to simulate a click on the "Next" button
     function clickNextButton() {
         const nextButton = document.querySelector('.ytp-next-button.ytp-button');
 
         if (nextButton) {
             nextButton.click();
-            console.log('Botón "Siguiente" presionado automáticamente.');
+            console.log('The "Next" button was clicked automatically.');
         } else {
-            console.log('No se encontró el botón "Siguiente".');
+            console.log('The "Next" button was not found.');
         }
     }
 
-    // Función para calcular la duración y establecer el temporizador
+    // Function to calculate video duration and set the timer
     function setupAutoNext() {
         const timeDisplay = document.querySelector('.ytp-time-display.notranslate');
 
@@ -44,46 +33,49 @@
                 const videoDuration = timeDuration.textContent;
                 const durationInMs = convertTimeToMs(videoDuration);
 
-                // Filtra videos que duren menos de 30 segundos
+                // Filter out videos shorter than 30 seconds
                 if (durationInMs <= 30000) {
-                    console.log('El video dura menos de 30 segundos. No se activará el auto-siguiente.');
+                    console.log('The video is shorter than 30 seconds. Auto-next will not be activated.');
                     return;
                 }
 
-                // Si es un video nuevo, configuramos el temporizador
+                // If it's a new video, set up the timer
                 if (videoDuration !== lastVideoDuration) {
-                    lastVideoDuration = videoDuration; // Actualiza la duración detectada
+                    lastVideoDuration = videoDuration; // Update the detected duration
 
-                    console.log('Duración del video detectada:', videoDuration, `(en milisegundos: ${durationInMs} ms)`);
+                    console.log('Detected video duration:', videoDuration, `(in milliseconds: ${durationInMs} ms)`);
 
-                    // Cancela cualquier temporizador previo
+                    // Cancel any previous timer
                     clearTimeout(timeoutId);
 
-                    // Configura un nuevo temporizador para presionar el botón al finalizar el video
+                    // Set a new timer to click the button when the video ends
                     timeoutId = setTimeout(() => {
-                        console.log('El video ha terminado. Presionando el botón "Siguiente".');
+                        console.log('The video has ended. Clicking the "Next" button.');
                         clickNextButton();
                     }, durationInMs);
                 } else {
-                    console.log('El temporizador ya está configurado para este video.');
+                    console.log('The timer is already set for this video.');
                 }
             } else {
-                console.log('No se encontró el elemento con la duración del video.');
+                console.log('The element with the video duration was not found.');
             }
         } else {
-            console.log('No se encontró el contenedor del tiempo del video.');
+            console.log('The video time container was not found.');
         }
     }
 
-    // Configurar todo al cargar la página
+    // Set everything up when the page loads
     document.addEventListener('DOMContentLoaded', () => {
         setupAutoNext();
     });
 
-    // Configuración periódica para adaptarse a cambios dinámicos
+    // Periodic setup to adapt to dynamic changes
     const observer = new MutationObserver(() => {
         setupAutoNext();
     });
 
-    observer.observe(document.body, { childList: true, subtree: true });
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
 })();
