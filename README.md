@@ -1,4 +1,4 @@
-# YouTube Premium Userscript
+# YouTube Premium Free
 
 ![YouTube Premium](https://github.com/user-attachments/assets/5e8d7fc8-4333-4173-9018-46b5ec970126)
 
@@ -6,7 +6,7 @@
 
 In a world where digital advertising dominates, it's time to reclaim your viewing experience. YouTubePremiumFree is a userscript designed to liberate you from intrusive ads and unwanted interruptions, giving you the freedom to enjoy YouTube without compromise.
 
-## 🚀 Features
+## Features
 
 - ✅ **AdBlocker**: Eliminate all forms of advertisements for an uninterrupted viewing experience.
 - ✅ **Premium Title**: Enjoy a premium-themed interface.
@@ -18,7 +18,7 @@ In a world where digital advertising dominates, it's time to reclaim your viewin
 - 🚧 **Offline Mode**: Under development.
 - 🚧 **Playback History**: Under development.
 
-## 🛠️ Installation
+## Installation
 
 ### 1. Install Tampermonkey
 
@@ -51,6 +51,6 @@ Install the Tampermonkey browser extension from the official sources below:
 1. Open the Tampermonkey Dashboard.
 1. Find the script in the list and click the toggle to enable it.
 
-### 🎉 Enjoy YouTube Ad-Free!
+### Enjoy YouTube Premium Free!
 
 Feel free to experience YouTube without ads or interruptions.
