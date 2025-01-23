@@ -14,9 +14,9 @@ In a world where digital advertising dominates, it's time to reclaim your viewin
 - ✅ **Autoplay Feature**: Seamless playback of videos.
 - ✅ **Premium Resolution**: Automatically switches to HD Premium resolution (customizable).
 - ✅ **Pop-ups Blocker**: Say goodbye to intrusive pop-ups.
-- 🚧 **Download Videos and Music**: Under development.
+- ✅ **Download Videos and Music**
+- ✅ **Playback History**
 - 🚧 **Offline Mode**: Under development.
-- 🚧 **Playback History**: Under development.
 
 ## Installation
 
@@ -41,10 +41,9 @@ Install the Tampermonkey browser extension from the official sources below:
 
 > **More Details**: Visit the [Tampermonkey FAQ: Q408](https://www.tampermonkey.net/faq.php#Q408).
 
-3. Install the Scripts
+3. Install the Script
 
 - **Ad Blocker Script**: [Click here to install](YouTube-Premium-Free.user.js?raw=True).
-- **Autoplay Enabler Script** (optional): [Click here to install](YouTube-Autoplay-Feature.user.js?raw=True).
 
 4. Enable the Script
 
